@@ -12,11 +12,15 @@ import io.ktor.server.netty.*
 @location("/questions")
 class Questions()
 
+@location("/questions/{questionId}")
+data class Question(val questionId: Int)
+
 fun Application.main() {
     install(DefaultHeaders)
     install(CallLogging)
     install(Locations)
     install(Routing) {
-        index()
+        questions()
+        question()
     }
 }
